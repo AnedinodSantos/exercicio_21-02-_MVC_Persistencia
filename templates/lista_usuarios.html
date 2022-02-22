@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Usuários</title>
+{% endblock %}
+
+{% block menu %}
+    <li> <a href="{{url_for('home')}}">Home</a> </li>
+    <li> <a href="{{url_for('cadastro')}}">Sign Up</a> </li>
+{% endblock%}
+
+{% block conteudo %}
+    <main>
+        <h1>Lista de usuários</h1>
+        <table>
+            <tr>
+                <td> Nome </td>
+                <td> E-mail </td>
+            </tr>
+            {% for item in lista %}
+                <tr>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock %}

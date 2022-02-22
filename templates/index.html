@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+{% block menu %}
+    <li> <a href="{{url_for('cadastro')}}">Sign Up</a> </li>
+    <li> <a href="{{url_for('listar_usuarios')}}">List All</a> </li>
+{% endblock%}
+
+{% block conteudo %}
+    <main>
+        <h1>Bem vindo!</h1>
+        <p>Neste projeto desenvolveremos uma aplicação MVC</p>
+        <p>Acesse o link de Sign Up e se cadastre</p>
+        <p>ou</p>
+        <p>Acesse a lista de todos os usuários</p>
+    </main>
+{% endblock %}

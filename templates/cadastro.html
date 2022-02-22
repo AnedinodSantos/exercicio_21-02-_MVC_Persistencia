@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Cadastro</title>
+{% endblock %}
+
+{% block menu %}
+    <li> <a href="{{url_for('home')}}">Home</a> </li>
+    <li> <a href="{{url_for('listar_usuarios')}}">List All</a> </li>
+{% endblock%}
+
+{% block conteudo %}
+    <main>
+        <h1>Cadastre-se!</h1>
+        <form action="/cadastrar" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome">
+    
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email">
+    
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha">
+    
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+{% endblock %}
