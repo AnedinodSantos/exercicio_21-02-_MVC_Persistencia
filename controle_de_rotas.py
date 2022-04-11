@@ -19,9 +19,9 @@ def cadastrar_usuario():
     # meu código aqui
     nome = request.form['nome']
     email = request.form['email']
-    senha = request.form['senha']
+    endereco = request.form['endereco']
 
-    bd_access.insere_usuario(nome, email, senha)
+    bd_access.insere_aluno(nome, email, endereco)
 
     return render_template('index.html')
 
@@ -29,7 +29,7 @@ def cadastrar_usuario():
 # criar a rota de listagem de usuários
 @app.route("/usuarios")
 def listar_usuarios():
-    lista = bd_access.lista_usuarios()
+    lista = bd_access.lista_alunos()
     return render_template('lista_usuarios.html', lista=lista)
 
 

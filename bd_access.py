@@ -6,44 +6,44 @@ engine = create_engine('sqlite:///ads4a.db')
 
 # criando a tabela de usuários
 with engine.connect() as con:
-    create_usuarios = """
-        CREATE TABLE IF NOT EXISTS Usuarios (
+    create_alunos = """
+        CREATE TABLE IF NOT EXISTS alunos (
             id INTEGER PRIMARY KEY,
             nome TEXT NOT NULL,
             email TEXT NOT NULL,
-            senha TEXT NOT NULL
+            endereco TEXT NOT NULL
         )
     """
 
-    rs = con.execute(create_usuarios)
+    rs = con.execute(create_alunos)
 
 # criar função para inserir um usuário
-def insere_usuario(nome, email, senha):
+def insere_aluno(nome, email, endereco):
     # é interessante validar os dados antes de inserir
     # é interessante validar se usuário já existe antes de inserir
     with engine.connect() as con:
         statement = text("""
-            INSERT INTO Usuarios VALUES (:id, :nome, :email, :senha)
+            INSERT INTO alunos VALUES (:id, :nome, :email, :endereco)
         """)
-        con.execute(statement, id=None, nome=nome, email=email, senha=senha)
+        con.execute(statement, id=None, nome=nome, email=email, endereco=endereco)
 
 # criar função para listar usuários
-def lista_usuarios():
+def lista_alunos():
     with engine.connect() as con:
         statement = text("""
-            SELECT nome, email FROM Usuarios
+            SELECT nome, email FROM alunos
         """)
         rs = con.execute(statement)
-        lista_de_usuarios = []
+        lista_de_alunos = []
         while True:
-            usuario = rs.fetchone()
-            if usuario == None:
+            aluno = rs.fetchone()
+            if aluno == None:
                 break
-            lista_de_usuarios.append(usuario)
-        return lista_de_usuarios
+            lista_de_alunos.append(aluno)
+        return lista_de_alunos
 
 
 if __name__ == '__main__':
-    insere_usuario("Anedino", "dino@dino","1234")
-    lista = lista_usuarios()
+    insere_aluno("Anedino", "dino@dino","1234")
+    lista = lista_alunos()
     print(lista)
